@@ -8,7 +8,6 @@ dependencies = ["mteb-gym"]
 
 [dependency-groups]
 dev = ["pytest>=8.3.4"]
-publish = ["huggingface_hub>=0.30"]
 
 [tool.uv.sources]
 mteb-gym = { git = "https://github.com/embeddings-benchmark/MTEB-gym-v2" }
