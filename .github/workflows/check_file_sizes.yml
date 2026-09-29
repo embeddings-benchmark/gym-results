@@ -1,0 +1,21 @@
+name: Check File Sizes
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  check-file-size:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Check file sizes
+        run: |
+          MAX_SIZE_BYTES=$((10 * 1024 * 1024))
+          for file in $(git diff --name-only --diff-filter=d ${{ github.event.pull_request.base.sha }} ${{ github.sha }}); do
+            if [ -f "$file" ] && [ "$(stat -c%s "$file")" -gt "$MAX_SIZE_BYTES" ]; then
+              echo "Error: $file is larger than 10MB"
+              exit 1
+            fi
+          done
