@@ -2,8 +2,8 @@ This repository contains the results of [MTEB Gym](https://github.com/embeddings
 
 | Reference | |
 | --- | --- |
-| **[mteb-gym]** | How to run the gym and submit results |
-| **[gym-runs]** | The queries and judge verdicts behind these results |
+| **[mteb-gym]** | How to run the gym, what a record holds, and how to submit |
+| **[gym-runs]** | The queries, predictions and judge verdicts behind these results |
 | **[Issues]** | Issues or bugs you have found |
 
 [mteb-gym]: https://github.com/embeddings-benchmark/MTEB-gym-v2
