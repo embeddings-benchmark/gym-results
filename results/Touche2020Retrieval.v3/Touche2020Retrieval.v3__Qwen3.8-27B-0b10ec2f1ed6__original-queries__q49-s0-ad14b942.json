@@ -1,0 +1,326 @@
+{
+  "task_name": "Touche2020Retrieval.v3",
+  "source": "mteb",
+  "corpus_id": "mteb/webis-touche2020-v3@431886eaecc48f067a3975b70d0949ea2862463c/default/test",
+  "dataset": {
+    "path": "mteb/webis-touche2020-v3",
+    "revision": "431886eaecc48f067a3975b70d0949ea2862463c"
+  },
+  "mteb_version": "2.15.1",
+  "gym_version": "0.3.0",
+  "gym_revision": "59cc18deed856f1057b0454bd3234fb5d52fc72b",
+  "evaluation_time": 6852.623197793961,
+  "config": {
+    "corpus_id": "mteb/webis-touche2020-v3@431886eaecc48f067a3975b70d0949ea2862463c/default/test",
+    "query_set": "mteb_webis-touche2020-v3_431886eaecc48f067a3975b70d0949ea2862463c_default_test-original-n49-s0",
+    "arm": "original",
+    "judge_model": "Qwen/Qwen3.8-27B+0b10ec2f1ed6",
+    "generator_model": null,
+    "task_description": null,
+    "task_description_source": null,
+    "judge_system": "You compare two retrieval systems.\nGiven a query and two ranked result sets (System A and System B), decide which set better satisfies the query, judging relevance, coverage of the information need, and ranking quality. Answer \"tie\" when the two sets are equally useful. Reply with strict JSON, reasoning first: {\"reasoning\": \"one sentence\", \"winner\": \"A\"|\"B\"|\"tie\"}",
+    "n_queries_generated": null,
+    "n_queries": 49,
+    "top_k": 10,
+    "doc_chars": 2000,
+    "pairs_per_query": null,
+    "seed": 0,
+    "models": [
+      "mteb/baseline-bm25s",
+      "sentence-transformers/all-MiniLM-L6-v2",
+      "BAAI/bge-small-en-v1.5",
+      "BAAI/bge-base-en-v1.5",
+      "BAAI/bge-large-en-v1.5",
+      "thenlper/gte-small",
+      "thenlper/gte-large",
+      "nomic-ai/nomic-embed-text-v1.5",
+      "mixedbread-ai/mxbai-embed-large-v1",
+      "intfloat/multilingual-e5-large-instruct",
+      "Snowflake/snowflake-arctic-embed-l-v2.0",
+      "Linq-AI-Research/Linq-Embed-Mistral",
+      "intfloat/e5-mistral-7b-instruct",
+      "Salesforce/SFR-Embedding-2_R",
+      "Qwen/Qwen3-Embedding-8B",
+      "Alibaba-NLP/gte-Qwen2-7B-instruct",
+      "BAAI/bge-en-icl"
+    ],
+    "model_revisions": {
+      "mteb/baseline-bm25s": "0_3_0",
+      "sentence-transformers/all-MiniLM-L6-v2": "8b3219a92973c328a8e22fadcfa821b5dc75636a",
+      "BAAI/bge-small-en-v1.5": "5c38ec7c405ec4b44b94cc5a9bb96e735b38267a",
+      "BAAI/bge-base-en-v1.5": "a5beb1e3e68b9ab74eb54cfd186867f64f240e1a",
+      "BAAI/bge-large-en-v1.5": "d4aa6901d3a41ba39fb536a557fa166f842b0e09",
+      "thenlper/gte-small": "17e1f347d17fe144873b1201da91788898c639cd",
+      "thenlper/gte-large": "4bef63f39fcc5e2d6b0aae83089f307af4970164",
+      "nomic-ai/nomic-embed-text-v1.5": "b0753ae76394dd36bcfb912a46018088bca48be0",
+      "mixedbread-ai/mxbai-embed-large-v1": "990580e27d329c7408b3741ecff85876e128e203",
+      "intfloat/multilingual-e5-large-instruct": "baa7be480a7de1539afce709c8f13f833a510e0a",
+      "Snowflake/snowflake-arctic-embed-l-v2.0": "edc2df7b6c25794b340229ca082e7c78782e6374",
+      "Linq-AI-Research/Linq-Embed-Mistral": "0c1a0b0589177079acc552433cad51d7c9132379",
+      "intfloat/e5-mistral-7b-instruct": "07163b72af1488142a360786df853f237b1a3ca1",
+      "Salesforce/SFR-Embedding-2_R": "91762139d94ed4371a9fa31db5551272e0b83818",
+      "Qwen/Qwen3-Embedding-8B": "4e423935c619ae4df87b646a3ce949610c66241c",
+      "Alibaba-NLP/gte-Qwen2-7B-instruct": "e26182b2122f4435e8b3ebecbf363990f409b45b",
+      "BAAI/bge-en-icl": "971c7e1445cc86656ca0bd85ed770b8675a40bb5"
+    },
+    "config_hash": "ad14b942"
+  },
+  "llms": {
+    "judge": {
+      "model": "Qwen/Qwen3.8-27B",
+      "base_url": null,
+      "served_model": null,
+      "temperature": 1.0,
+      "response_format": {
+        "type": "json_schema",
+        "json_schema": {
+          "name": "answer",
+          "schema": {
+            "type": "object",
+            "properties": {
+              "reasoning": {
+                "type": "string"
+              },
+              "winner": {
+                "type": "string",
+                "enum": [
+                  "A",
+                  "B",
+                  "tie"
+                ]
+              }
+            },
+            "required": [
+              "reasoning",
+              "winner"
+            ],
+            "additionalProperties": false
+          },
+          "strict": true
+        }
+      },
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      },
+      "top_p": 0.95,
+      "top_k": 20
+    },
+    "generator": null
+  },
+  "labels": "dataset",
+  "diagnostics": {
+    "judge_calls": 13328,
+    "n_comparisons": 6664,
+    "commit_rate": 0.8235294117647058,
+    "tie_rate": 0.17647058823529413,
+    "a_first_rate": 0.5393857475407374,
+    "parse_failure_rate": 0.0,
+    "identical_retrieval_rate": 0.0
+  },
+  "ratings": [
+    {
+      "model": "Linq-AI-Research/Linq-Embed-Mistral",
+      "revision": "0c1a0b0589177079acc552433cad51d7c9132379",
+      "rating": 1200.1416933757466,
+      "ci_low": 1139.7404000772458,
+      "ci_high": 1269.5604574679141,
+      "wins": 533.0,
+      "losses": 126.0,
+      "ties": 125.0,
+      "n": 784,
+      "ndcg_at_10": 0.57385
+    },
+    {
+      "model": "Qwen/Qwen3-Embedding-8B",
+      "revision": "4e423935c619ae4df87b646a3ce949610c66241c",
+      "rating": 1194.6326057021597,
+      "ci_low": 1148.866886788257,
+      "ci_high": 1248.2407348966246,
+      "wins": 516.0,
+      "losses": 118.0,
+      "ties": 150.0,
+      "n": 784,
+      "ndcg_at_10": 0.74075
+    },
+    {
+      "model": "Snowflake/snowflake-arctic-embed-l-v2.0",
+      "revision": "edc2df7b6c25794b340229ca082e7c78782e6374",
+      "rating": 1112.6190915731033,
+      "ci_low": 1073.856995986654,
+      "ci_high": 1156.7484775101757,
+      "wins": 443.0,
+      "losses": 199.0,
+      "ties": 142.0,
+      "n": 784,
+      "ndcg_at_10": 0.6405
+    },
+    {
+      "model": "Alibaba-NLP/gte-Qwen2-7B-instruct",
+      "revision": "e26182b2122f4435e8b3ebecbf363990f409b45b",
+      "rating": 1066.2155945597763,
+      "ci_low": 1017.8635122538047,
+      "ci_high": 1121.3082343538588,
+      "wins": 401.0,
+      "losses": 255.0,
+      "ties": 128.0,
+      "n": 784,
+      "ndcg_at_10": 0.55818
+    },
+    {
+      "model": "Salesforce/SFR-Embedding-2_R",
+      "revision": "91762139d94ed4371a9fa31db5551272e0b83818",
+      "rating": 1049.6191991387018,
+      "ci_low": 996.0818476553931,
+      "ci_high": 1106.4487271932398,
+      "wins": 379.0,
+      "losses": 268.0,
+      "ties": 137.0,
+      "n": 784,
+      "ndcg_at_10": 0.53764
+    },
+    {
+      "model": "intfloat/multilingual-e5-large-instruct",
+      "revision": "baa7be480a7de1539afce709c8f13f833a510e0a",
+      "rating": 1032.0716724908737,
+      "ci_low": 982.4300962136721,
+      "ci_high": 1081.6057305712918,
+      "wins": 356.0,
+      "losses": 284.0,
+      "ties": 144.0,
+      "n": 784,
+      "ndcg_at_10": 0.56546
+    },
+    {
+      "model": "nomic-ai/nomic-embed-text-v1.5",
+      "revision": "b0753ae76394dd36bcfb912a46018088bca48be0",
+      "rating": 1022.1099040068987,
+      "ci_low": 972.2505975485973,
+      "ci_high": 1074.703449474211,
+      "wins": 344.0,
+      "losses": 295.0,
+      "ties": 145.0,
+      "n": 784,
+      "ndcg_at_10": 0.63673
+    },
+    {
+      "model": "BAAI/bge-small-en-v1.5",
+      "revision": "5c38ec7c405ec4b44b94cc5a9bb96e735b38267a",
+      "rating": 1020.9800795052739,
+      "ci_low": 973.167815083082,
+      "ci_high": 1064.3912909560845,
+      "wins": 344.0,
+      "losses": 297.0,
+      "ties": 143.0,
+      "n": 784,
+      "ndcg_at_10": 0.57573
+    },
+    {
+      "model": "mteb/baseline-bm25s",
+      "revision": "0_3_0",
+      "rating": 986.724160175351,
+      "ci_low": 929.9700876269196,
+      "ci_high": 1046.672146743786,
+      "wins": 298.0,
+      "losses": 327.0,
+      "ties": 159.0,
+      "n": 784,
+      "ndcg_at_10": 0.6568
+    },
+    {
+      "model": "thenlper/gte-large",
+      "revision": "4bef63f39fcc5e2d6b0aae83089f307af4970164",
+      "rating": 973.8586368086865,
+      "ci_low": 920.3846418251245,
+      "ci_high": 1022.8484255833246,
+      "wins": 291.0,
+      "losses": 348.0,
+      "ties": 145.0,
+      "n": 784,
+      "ndcg_at_10": 0.53438
+    },
+    {
+      "model": "BAAI/bge-en-icl",
+      "revision": "971c7e1445cc86656ca0bd85ed770b8675a40bb5",
+      "rating": 954.1057107945364,
+      "ci_low": 897.5967431816102,
+      "ci_high": 1007.3188553312679,
+      "wins": 267.0,
+      "losses": 368.0,
+      "ties": 149.0,
+      "n": 784,
+      "ndcg_at_10": 0.54957
+    },
+    {
+      "model": "mixedbread-ai/mxbai-embed-large-v1",
+      "revision": "990580e27d329c7408b3741ecff85876e128e203",
+      "rating": 947.4746997576301,
+      "ci_low": 894.6821417967211,
+      "ci_high": 998.8114123289149,
+      "wins": 271.0,
+      "losses": 386.0,
+      "ties": 127.0,
+      "n": 784,
+      "ndcg_at_10": 0.48795
+    },
+    {
+      "model": "thenlper/gte-small",
+      "revision": "17e1f347d17fe144873b1201da91788898c639cd",
+      "rating": 943.1141807898606,
+      "ci_low": 895.8635804863346,
+      "ci_high": 985.8307798995809,
+      "wins": 262.0,
+      "losses": 387.0,
+      "ties": 135.0,
+      "n": 784,
+      "ndcg_at_10": 0.49013
+    },
+    {
+      "model": "sentence-transformers/all-MiniLM-L6-v2",
+      "revision": "8b3219a92973c328a8e22fadcfa821b5dc75636a",
+      "rating": 928.3153362845849,
+      "ci_low": 874.9972492808477,
+      "ci_high": 982.8564060496084,
+      "wins": 238.0,
+      "losses": 395.0,
+      "ties": 151.0,
+      "n": 784,
+      "ndcg_at_10": 0.49713
+    },
+    {
+      "model": "BAAI/bge-base-en-v1.5",
+      "revision": "a5beb1e3e68b9ab74eb54cfd186867f64f240e1a",
+      "rating": 922.9488987116841,
+      "ci_low": 869.1014663422686,
+      "ci_high": 971.0276367225127,
+      "wins": 240.0,
+      "losses": 409.0,
+      "ties": 135.0,
+      "n": 784,
+      "ndcg_at_10": 0.49714
+    },
+    {
+      "model": "BAAI/bge-large-en-v1.5",
+      "revision": "d4aa6901d3a41ba39fb536a557fa166f842b0e09",
+      "rating": 884.4299881462335,
+      "ci_low": 834.7827697471125,
+      "ci_high": 932.122949341633,
+      "wins": 203.0,
+      "losses": 452.0,
+      "ties": 129.0,
+      "n": 784,
+      "ndcg_at_10": 0.47058
+    },
+    {
+      "model": "intfloat/e5-mistral-7b-instruct",
+      "revision": "07163b72af1488142a360786df853f237b1a3ca1",
+      "rating": 760.638548178899,
+      "ci_low": 686.9451820354349,
+      "ci_high": 818.1197155240665,
+      "wins": 102.0,
+      "losses": 574.0,
+      "ties": 108.0,
+      "n": 784,
+      "ndcg_at_10": 0.16176
+    }
+  ]
+}
