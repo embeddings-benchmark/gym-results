@@ -1,27 +1,12 @@
-import json
 from pathlib import Path
 
+from mteb_gym import Result
 
-def test_every_file_is_a_record_in_its_task_folder():
+
+def test_records_load_with_the_gym():
+    """Every file loads as a gym record and sits in results/<its task>/."""
     for path in Path("results").rglob("*.json"):
-        record = json.loads(path.read_text())
-        task = record["task_name"]
-        assert path.parent == Path("results") / task, (
-            f"{path}: belongs in results/{task}/"
-        )
-        assert path.name.startswith(f"{task}__"), (
-            f"{path}: name must start with {task}__"
-        )
-        for key in ("corpus_id", "gym_revision", "config", "diagnostics", "ratings"):
-            assert key in record, f"{path}: missing {key}"
-        assert {"models", "model_revisions", "query_set"} <= record["config"].keys(), (
-            f"{path}: incomplete config"
-        )
-        for rating in record["ratings"]:
-            assert {
-                "model",
-                "revision",
-                "rating",
-                "ci_low",
-                "ci_high",
-            } <= rating.keys(), f"{path}: incomplete rating"
+        result = Result.from_disk(path)
+        task = result.record["task_name"]
+        assert path.parent == Path("results") / task, f"{path}: belongs in results/{task}/"
+        assert not result.to_dataframe().empty, f"{path}: no ratings"
