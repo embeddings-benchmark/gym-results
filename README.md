@@ -1,4 +1,4 @@
-This repository contains the results of [MTEB Gym](https://github.com/embeddings-benchmark/MTEB-gym-v2), which ranks embedding models on a corpus with an LLM judge.
+This repository contains the results of [MTEB Gym](https://github.com/embeddings-benchmark/MTEB-gym), which ranks embedding models on a corpus with an LLM judge.
 
 | Reference | |
 | --- | --- |
@@ -6,9 +6,9 @@ This repository contains the results of [MTEB Gym](https://github.com/embeddings
 | **[gym-runs]** | The queries, predictions and judge verdicts behind these results |
 | **[Issues]** | Issues or bugs you have found |
 
-[mteb-gym]: https://github.com/embeddings-benchmark/MTEB-gym-v2
+[mteb-gym]: https://github.com/embeddings-benchmark/MTEB-gym
 [gym-runs]: https://huggingface.co/datasets/mteb/gym-runs
-[Issues]: https://github.com/embeddings-benchmark/MTEB-gym-v2/issues
+[Issues]: https://github.com/embeddings-benchmark/MTEB-gym/issues
 
 ## License
 
